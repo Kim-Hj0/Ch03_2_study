@@ -8,8 +8,9 @@ public class PlayerInputController : TopDownCharacterController
 {
     private Camera _camera;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _camera = Camera.main; //이 씬에 존재하는 태그가 메인카메라인 걸 가져오겠다.
     }
 

@@ -14,6 +14,13 @@ public class TopDownCharacterController : MonoBehaviour
     private float _timeSinceLastAttack = float.MaxValue;
     protected bool IsAttacking {  get; set; }    //어택에 대한 프로퍼티
 
+    protected CharacterStatsHandler Stats {  get; private set; }
+
+    protected virtual void Awake()  //상속하는 얘니까, virtual
+    {
+        Stats = GetComponent<CharacterStatsHandler>();
+    }
+
     protected  virtual void Update()
     {
         HandleAttackDelay();
@@ -21,11 +28,14 @@ public class TopDownCharacterController : MonoBehaviour
 
     private void HandleAttackDelay()
     {
-        if (_timeSinceLastAttack <= 0.2f)   //TODO
+        if (Stats.CurrentStates.attackSO == null)   //어택 정보가 없다면 공격을 하지 않겠다.
+            return;
+
+        if (_timeSinceLastAttack <= Stats.CurrentStates.attackSO.delay)  
         {
             _timeSinceLastAttack += Time.deltaTime;
         }
-        if (IsAttacking && _timeSinceLastAttack > 0.2f)
+        if (IsAttacking && _timeSinceLastAttack > Stats.CurrentStates.attackSO.delay)
         {
             _timeSinceLastAttack = 0;   //0으로 초기화해줘야함.
             CallAttackEvent();  //공격을 시전한다.

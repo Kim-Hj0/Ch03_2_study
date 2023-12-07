@@ -9,7 +9,7 @@ public class TopDownCharacterController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     //이런 걸 만들었을 때는 나만 쓸 수 있도록 만드는 게 좋다.(플레이어)
-    public event Action OnAttackEvent;
+    public event Action<AttackSO> OnAttackEvent;
 
     private float _timeSinceLastAttack = float.MaxValue;
     protected bool IsAttacking {  get; set; }    //어택에 대한 프로퍼티
@@ -38,7 +38,7 @@ public class TopDownCharacterController : MonoBehaviour
         if (IsAttacking && _timeSinceLastAttack > Stats.CurrentStates.attackSO.delay)
         {
             _timeSinceLastAttack = 0;   //0으로 초기화해줘야함.
-            CallAttackEvent();  //공격을 시전한다.
+            CallAttackEvent(Stats.CurrentStates.attackSO);  //공격을 시전한다.
         }
     }
 
@@ -52,9 +52,9 @@ public class TopDownCharacterController : MonoBehaviour
         OnLookEvent?.Invoke(direction);
     }
 
-    public void CallAttackEvent()
+    public void CallAttackEvent(AttackSO attackSO)
     {
-        OnAttackEvent?.Invoke();
+        OnAttackEvent?.Invoke(attackSO);
     }
 
 

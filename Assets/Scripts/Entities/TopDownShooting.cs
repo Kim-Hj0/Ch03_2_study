@@ -32,8 +32,9 @@ public class TopDownShooting : MonoBehaviour
         _aimDirection = newAimDirection;
     }
 
-    private void OnShoot()  //실제로 사용해야함.
+    private void OnShoot(AttackSO attackSO)  //실제로 사용해야함.
     {
+
         CreateProjectile();
     }
 

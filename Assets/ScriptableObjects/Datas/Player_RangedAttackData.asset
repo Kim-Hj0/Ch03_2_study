@@ -16,8 +16,10 @@ MonoBehaviour:
   delay: 0.15
   power: 2
   speed: 10
-  target: 0
-  isOnKnockback: 0
+  target:
+    serializedVersion: 2
+    m_Bits: 0
+  isOnKnockback: 1
   knockbackPower: 5
   knockbackTime: 0.1
   bulletNameTag: Arrow

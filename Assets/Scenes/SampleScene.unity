@@ -2708,6 +2708,7 @@ GameObject:
   - component: {fileID: 898998766}
   - component: {fileID: 898998764}
   - component: {fileID: 898998765}
+  - component: {fileID: 898998768}
   - component: {fileID: 898998767}
   m_Layer: 0
   m_Name: Player
@@ -2891,6 +2892,20 @@ MonoBehaviour:
     speed: 5
     attackSO: {fileID: 11400000, guid: 9f21444d65546a0479034cc9b5334db0, type: 2}
   statsModifiers: []
+--- !u!114 &898998768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898998759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96709834d5e007a4b86d601162980d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPosition: {fileID: 1131506913}
+  testPrefab: {fileID: 7826684520944943793, guid: 852ddf7fced54174d8b57007801d344f, type: 3}
 --- !u!1 &1131506912
 GameObject:
   m_ObjectHideFlags: 0

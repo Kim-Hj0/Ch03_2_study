@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9119b91b91a9b4a8dccdf8d5e6b600, type: 3}
   m_Name: Orc_Shaman_RangedAttackData
   m_EditorClassIdentifier: 
-  size: 1
-  delay: 0.5
-  power: 2
+  size: 0.5
+  delay: 1
+  power: 1
   speed: 10
   target:
     serializedVersion: 2

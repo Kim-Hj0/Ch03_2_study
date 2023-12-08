@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TopDownAnimations : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected Animator animator;
+    protected TopDownCharacterController controller;
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Awake()
     {
-        
+        animator = GetComponentInChildren<Animator>();
+        controller = GetComponent<TopDownCharacterController>();
     }
 }

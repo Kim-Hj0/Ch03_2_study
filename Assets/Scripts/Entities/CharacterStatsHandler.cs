@@ -77,7 +77,7 @@ public class CharacterStatsHandler : MonoBehaviour
         CurrentStates.maxHealth = (int)operation(CurrentStates.maxHealth, newModifier.maxHealth);
         CurrentStates.speed = operation(CurrentStates.speed, newModifier.speed);
 
-        if (CurrentStates.attackSO == null || newModifier.attackSO == null) //어택에서도
+        if (CurrentStates.attackSO == null || newModifier.attackSO == null) 
             return;
 
         UpdateAttackStats(operation, CurrentStates.attackSO, newModifier.attackSO);

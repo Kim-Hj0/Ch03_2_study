@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform spawnPositionsRoot;
     private List<Transform> spawnPostions = new List<Transform>();
 
-
+    public List<GameObject> rewards = new List<GameObject>();   //æ∆¿Ã≈€
 
     private void Awake()
     {
@@ -77,10 +77,10 @@ public class GameManager : MonoBehaviour
                     waveSpawnCount = 0;
                 }
 
-                //if (currentWaveIndex % 5 == 0)
-                //{
-                //    CreateReward();
-                //}
+                if (currentWaveIndex % 5 == 0)
+                {
+                    CreateReward();
+                }
 
                 if (currentWaveIndex % 3 == 0)
                 {
@@ -139,4 +139,14 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit(); 
     }
+
+    void CreateReward()
+    {
+        int idx = Random.Range(0, rewards.Count);
+        int posIdx = Random.Range(0, spawnPostions.Count);
+
+        GameObject obj = rewards[idx];
+        Instantiate(obj, spawnPostions[posIdx].position, Quaternion.identity);
+    }
+
 }

@@ -8162,6 +8162,12 @@ MonoBehaviour:
   - {fileID: 1124658656765490308, guid: ac961e1b40cd0be49b1e6ebf6ba22d1c, type: 3}
   - {fileID: 767724704172565063, guid: 200476a849017704b854baf2cec7f51e, type: 3}
   spawnPositionsRoot: {fileID: 2083320724}
+  rewards:
+  - {fileID: 5016828685092087515, guid: 99b1aa669017a9f4ab0046128ce86706, type: 3}
+  - {fileID: 5153138805439844052, guid: 9324d2e3329ddc74a9b8cfdd9ab411c5, type: 3}
+  - {fileID: 6875247202037925142, guid: 8b59bf3c9398b20449e7e891bb589083, type: 3}
+  - {fileID: 5153138805439844052, guid: 9324d2e3329ddc74a9b8cfdd9ab411c5, type: 3}
+  - {fileID: 5153138805439844052, guid: 9324d2e3329ddc74a9b8cfdd9ab411c5, type: 3}
 --- !u!1 &813753536
 GameObject:
   m_ObjectHideFlags: 0

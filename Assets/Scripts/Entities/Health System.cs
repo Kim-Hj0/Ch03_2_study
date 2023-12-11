@@ -15,6 +15,8 @@ public class HealthSystem : MonoBehaviour
     public event Action OnDeath;
     public event Action OnInvincibilityEnd;
 
+    public AudioClip damageClip; //데미지 소리
+
     public float CurrentHealth { get; private set; }
 
     public float MaxHealth => _statsHandler.CurrentStates.maxHealth;
@@ -60,6 +62,9 @@ public class HealthSystem : MonoBehaviour
         else
         {
             OnDamage?.Invoke();
+
+            if(damageClip)
+                SoundManager.PlayClip(damageClip);  //데이지를 입힐 경우, 소리 나게 하기.
         }
 
         if (CurrentHealth <= 0f)

@@ -50,6 +50,26 @@ public class RangedAttackController : MonoBehaviour
         {
             DestroyProjectile(collision.ClosestPoint(transform.position) - _direction * .2f, fxOnDestory);
         }
+        
+        //원거리 공격이 충돌을 했을 때를 의미.
+        else if(_attackData.target.value == (_attackData.target.value | (1 << collision.gameObject.layer))) 
+        {
+            HealthSystem healthSystem = collision.GetComponent<HealthSystem>();
+            if (healthSystem != null)
+            {
+                healthSystem.ChangeHealth(-_attackData.power);
+                if(_attackData.isOnKnockback)
+                {
+                    TopDownMovement movement = collision.GetComponent<TopDownMovement>();
+
+                    if(movement != null)
+                    {
+                        movement.ApplyKnockback(transform, _attackData.knockbackPower, _attackData.knockbackTime);
+                    }
+                }
+            }
+            DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestory); //충돌이 끝났으니 삭제를 해야겠죠.
+        }
     }
 
     public void InitializeAttack(Vector2 direction, RangedAttackData attackData, ProjectileManager projectileManager)

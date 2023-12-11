@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 7321622678474863173}
   - component: {fileID: 911730693102976856}
   - component: {fileID: 3195463362360618957}
+  - component: {fileID: 8537953739131304236}
+  - component: {fileID: -5671983599599169575}
   m_Layer: 6
   m_Name: Orc_Shaman
   m_TagString: Untagged
@@ -195,6 +197,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f55b9025aeac71940af7affda6e765cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8537953739131304236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767724704172565063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b04a47c7d6ffab4a87d49534ab44481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChangeDelay: 0.5
+--- !u!114 &-5671983599599169575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767724704172565063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3232ac20905ca45b4ef77a96291514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3102067029902537735
@@ -418,7 +445,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d16e067617de25641be8f7161dbf9609, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> rewards = new List<GameObject>();   //아이템
 
+    [SerializeField] private CharacterStats defaultStats;    // 캐릭터 스탯
+    [SerializeField] private CharacterStats rangedStats;
+
     private void Awake()
     {
         Instance = this;
@@ -53,9 +56,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //UpgradeStatInit();
+        UpgradeStatInit();
         StartCoroutine("StartNextWave");
     }
+
+ 
 
     IEnumerator StartNextWave() //실행에 대한 순서를 감안했다가 돌아와서 다시.
     {
@@ -66,10 +71,10 @@ public class GameManager : MonoBehaviour
                 UpdateWaveUI();
                 yield return new WaitForSeconds(2f);
 
-                //if (currentWaveIndex % 20 == 0)
-                //{
-                //    RandomUpgrade();
-                //}
+                if (currentWaveIndex % 20 == 0) //20번마다 업그레이드 되게.
+                {
+                    RandomUpgrade();
+                }
 
                 if (currentWaveIndex % 10 == 0)
                 {
@@ -77,7 +82,7 @@ public class GameManager : MonoBehaviour
                     waveSpawnCount = 0;
                 }
 
-                if (currentWaveIndex % 5 == 0)
+                if (currentWaveIndex % 5 == 0)  //5번째마다 리워드 생성.
                 {
                     CreateReward();
                 }
@@ -96,7 +101,9 @@ public class GameManager : MonoBehaviour
                         int prefabIdx = Random.Range(0, enemyPrefebs.Count);
                         GameObject enemy = Instantiate(enemyPrefebs[prefabIdx], spawnPostions[posIdx].position, Quaternion.identity);
                         enemy.GetComponent<HealthSystem>().OnDeath += OnEnemyDeath; //죽었을 때 이거 실행해.
-                        //enemy.GetComponent<CharacterStatsHandler>
+
+                        enemy.GetComponent<CharacterStatsHandler>().AddStatModifier(defaultStats); // 몬스터를 생성할 때 지워주어야 함.
+                        enemy.GetComponent<CharacterStatsHandler>().AddStatModifier(rangedStats);
 
                         currentSpawnCount++;
                         yield return new WaitForSeconds(spawnInterval);
@@ -140,6 +147,17 @@ public class GameManager : MonoBehaviour
         Application.Quit(); 
     }
 
+
+    private void UpgradeStatInit()  //스탯을 초기화하는 코드.
+    {
+        defaultStats.statsChangeType = StatsChangeType.Add;
+        defaultStats.attackSO = Instantiate(defaultStats.attackSO);
+
+        rangedStats.statsChangeType = StatsChangeType.Add;
+        rangedStats.attackSO = Instantiate(rangedStats.attackSO);
+    }
+
+
     void CreateReward()
     {
         int idx = Random.Range(0, rewards.Count);
@@ -149,4 +167,34 @@ public class GameManager : MonoBehaviour
         Instantiate(obj, spawnPostions[posIdx].position, Quaternion.identity);
     }
 
+    void RandomUpgrade()    //랜덤으로 업그레이드 되는. 적이 똑같으니까 조금씩 발전할 수 있는.
+    {
+        switch (Random.Range(0,6))
+        {
+            case 0:
+                defaultStats.maxHealth += 2;
+                break;
+            case 1:
+                defaultStats.attackSO.power += 1;
+                break;
+            case 2:
+                defaultStats.speed += 0.1f;
+                break;
+            case 3:
+                defaultStats.attackSO.isOnKnockback = true; //넉백
+                defaultStats.attackSO.knockbackPower += 1;
+                defaultStats.attackSO.knockbackTime = 0.1f;
+                break;
+            case 4:
+                defaultStats.attackSO.delay -= 0.5f;
+                break;
+            case 5:
+                RangedAttackData rangedAttackData = rangedStats.attackSO as RangedAttackData;
+                rangedAttackData.numberofProjectilesPerShot += 1;
+                break;
+
+            default:
+                break;
+        }
+    }
 }

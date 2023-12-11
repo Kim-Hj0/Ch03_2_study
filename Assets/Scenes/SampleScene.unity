@@ -8168,6 +8168,16 @@ MonoBehaviour:
   - {fileID: 6875247202037925142, guid: 8b59bf3c9398b20449e7e891bb589083, type: 3}
   - {fileID: 5153138805439844052, guid: 9324d2e3329ddc74a9b8cfdd9ab411c5, type: 3}
   - {fileID: 5153138805439844052, guid: 9324d2e3329ddc74a9b8cfdd9ab411c5, type: 3}
+  defaultStats:
+    statsChangeType: 0
+    maxHealth: 0
+    speed: 0
+    attackSO: {fileID: 11400000, guid: 9349ee5e20ca5e94eb277654bc4cf6f0, type: 2}
+  rangedStats:
+    statsChangeType: 0
+    maxHealth: 0
+    speed: 0
+    attackSO: {fileID: 11400000, guid: cfe1ec3ac68530841b73c6d6fcea13f2, type: 2}
 --- !u!1 &813753536
 GameObject:
   m_ObjectHideFlags: 0
